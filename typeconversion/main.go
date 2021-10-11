@@ -1,13 +1,30 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"strings"
+	"time"
+)
 
 func main() {
-	speed := 100
-	force := 2.5
+	start := time.Now()
+	//fmt.Println(join("abc", "123", "xyz", "abc", "123", "xyz", "abc", "123", "xyz", "abc", "123", "xyz", "abc", "123", "xyz"))
+	fmt.Println(join2("abc", "123", "xyz", "abc", "123", "xyz", "abc", "123", "xyz", "abc", "123", "xyz", "abc", "123", "xyz"))
+	fmt.Println(time.Since(start).Nanoseconds())
+}
 
-	speed = int(float64(speed) * force)
+func join(strs ...string) string {
+	var ret string
+	for _, str := range strs {
+		ret += str
+	}
+	return ret
+}
 
-	fmt.Println(speed)
-
+func join2(strs ...string) string {
+	var sb strings.Builder
+	for _, str := range strs {
+		sb.WriteString(str)
+	}
+	return sb.String()
 }
